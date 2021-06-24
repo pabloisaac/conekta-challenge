@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlBase = "https://161.22.44.36:7777";
+const urlBase = "ec2-3-143-216-169.us-east-2.compute.amazonaws.com:7777";
 
 export const login = async (username, password) => {
     let url = `${urlBase}/login`
