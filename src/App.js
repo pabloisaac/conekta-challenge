@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from "react";
+import { initialState, reducer, AppContext } from "./store/reducer";
+import Router from "./components/Router";
 
-function App() {
+
+const App = () => {
+  let [state, dispatch] = useReducer(reducer, initialState);
+  let value = { state, dispatch };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={value}>
+      <Router />
+    </AppContext.Provider>
   );
-}
+};
 
 export default App;

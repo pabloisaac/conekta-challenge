@@ -1,0 +1,57 @@
+.container-divs{
+    display:flex
+}
+
+.container-logo{
+    margin: 5%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    margin: 3%;
+}
+
+.btn-group{
+    display: flex;
+}
+
+.btn-color{
+    background-color: #091637;
+    border-color: #091637;
+    color: white;
+}
+
+.btn-color:hover{
+    background-color: white;
+    border-color: #E50D95;
+    color: #E50D95;
+}
+
+.nav-link:hover{
+    color: #00A1AF !important;
+    font-weight: bold;
+}
+
+.modal-css{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paper-css{
+    width: 50%;
+}
+
+.navbar-color{
+    background-color: #091637;
+    height: 5em;
+}
+
+.center-spinner{
+    display: flex;
+    justify-content: center;
+    margin-top: 20%;
+}
