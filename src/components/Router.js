@@ -26,7 +26,7 @@ const RouterComponent = () => {
   }, []);
 
   return (
-    <Router>
+    <Router basename={window.location.pathname || ''}>
       <Header />
       <main>
         <Switch>
