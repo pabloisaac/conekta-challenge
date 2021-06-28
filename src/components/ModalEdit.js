@@ -4,7 +4,7 @@ import { getListRecords} from "../services/ApiConekta";
 import Modal from '@material-ui/core/Modal';
 import Paper from "@material-ui/core/Paper";
 import Form from './Form';
-import { setModalVisible, updateListItems } from "../store/actions";
+import { setModalVisible, updateListItems, setMode } from "../store/actions";
 import './index.css';
 import _ from "lodash";
 
@@ -18,6 +18,7 @@ const ModalEdit = () => {
           dispatch(updateListItems(response.data))
         }
         dispatch(setModalVisible(false))
+        dispatch(setMode('SAVE'))
     }
 
     return (
@@ -30,7 +31,7 @@ const ModalEdit = () => {
                 className="modal-css"
             >
                 <Paper elevation={3} className="paper-css">
-                    <Form mode="edit" />
+                    <Form/>
                 </Paper>
             </Modal>
         </>

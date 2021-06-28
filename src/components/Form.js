@@ -10,11 +10,11 @@ import './index.css';
 import formLogo from '../images/Login-02.svg';
 
 
-const Forms = ({ mode }) => {
+const Forms = () => {
   const { state, dispatch } = useContext(AppContext);
 
   useEffect(() => {
-    if (mode === 'edit') {
+    if (state.mode === 'EDIT') {
       setStreet(state.item.street)
       setNumExt(state.item.numExt)
       setNumInt(state.item.numInt)
@@ -49,65 +49,60 @@ const Forms = ({ mode }) => {
   const [countryOptions, setCountryOptions] = useState([]);
 
   const handleSubmit = async () => {
-    const data = {
-      street,
-      numExt,
-      numInt,
-      cp: cp,
-      suburb: suburb.value,
-      delegation: delegation.value,
-      city: city.value,
-      status: status.value,
-      country: country.value
-    }
-    let respPost = await postRecord(data, sessionStorage.getItem('token'));
-    if (_.has(respPost, "status") && respPost.status === 200) {
-      Swal.fire(
-        "Registro Insertado!",
-        `Se creo el registro con #${respPost.data.ops[0]._id}`,
-        "success"
-      );
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Error al guardar",
-        footer: "Hubo un error al guardar el registro, por favor reintente!"
-      });
-    }
-    cleanInputs()
-  }
+    if (street !== "" &&
+      numExt !== "" &&
+      numInt !== "" &&
+      cp !== "" &&
+      suburb.value !== "" &&
+      delegation.value !== "" &&
+      city.value !== "" &&
+      status.value !== "" &&
+      country.value !== "") {
 
-  const handleEdit = async () => {
-    const data = {
-      _id: state.item._id,
-      street,
-      numExt,
-      numInt,
-      cp: cp,
-      suburb: suburb.value,
-      delegation: delegation.value,
-      city: city.value,
-      status: status.value,
-      country: country.value
-    }
-    let respPut = await putRecord(data, sessionStorage.getItem('token'));
-    if (_.has(respPut, "status") && respPut.status === 200) {
-      await updateList()
-      Swal.fire(
-        "Registro Actualizado!",
-        `Se actualizo el registro con #${data._id}`,
-        "success"
-      );
+      const data = {
+        _id: state.mode === "EDIT" ? state.item._id : null,
+        street,
+        numExt,
+        numInt,
+        cp: cp,
+        suburb: suburb.value,
+        delegation: delegation.value,
+        city: city.value,
+        status: status.value,
+        country: country.value
+      }
+      let response = state.mode === "EDIT" ? await putRecord(data, sessionStorage.getItem('token')) : postRecord(data, sessionStorage.getItem('token'));
+      if (_.has(response, "status") && response.status === 200) {
+      let msgTitle = state.mode === "EDIT" ? "Registro Actualizado!" : "Registro Insertado!";
+      let msgBody = state.mode === "EDIT" ? `Se actualizo el registro con #${data._id}` : `Se creo el registro con #${response.data.ops[0]._id}`
+    
+        await updateList()
+        Swal.fire(
+          msgTitle,
+          msgBody,
+          "success"
+        );
+      } else {
+
+        let msgErrTitle = state.mode === "EDIT" ? "Error al actualizar" : "Error al insertar"
+        let msgErrBody = state.mode === "EDIT" ? "Hubo un error al actualizo el registro, por favor reintente!" : "Hubo un error al insertar el registro, por favor reintente!"
+
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: msgErrTitle,
+          footer: msgErrBody
+        });
+      }
+      cleanInputs()
     } else {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Error al actualizar",
-        footer: "Hubo un error al actualizo el registro, por favor reintente!"
+        text: "Campos incompletos!",
+        footer: "Debe completar todos los campos para continuar, por favor reintente!"
       });
     }
-    cleanInputs()
   };
 
   const cleanInputs = () => {
@@ -133,7 +128,7 @@ const Forms = ({ mode }) => {
       dispatch(updateListItems(response.data))
     }
     dispatch(setModalVisible(false))
-}
+  }
 
   const handleChange = (e) => {
     if (e.target.name !== undefined && e.target.name === "street")
@@ -298,9 +293,9 @@ const Forms = ({ mode }) => {
             type="submit"
             disabled={!state.login}
             className="btn btn-color"
-            onClick= {(mode === "edit" && handleEdit) || (mode === undefined && handleSubmit)}
+            onClick={() => handleSubmit()}
           >
-            {(mode === "edit" && 'Editar') || (mode === undefined && 'Guardar')}
+            {(state.mode === "EDIT" && 'Editar') || (state.mode === 'SAVE' && 'Guardar')}
           </button>
         </div>
 

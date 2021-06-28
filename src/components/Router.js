@@ -23,7 +23,7 @@ const RouterComponent = () => {
         }
       }
     })();
-  }, []);
+  }, [state.login]);
 
   return (
     <Router basename={window.location.pathname || ''}>

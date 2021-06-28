@@ -8,7 +8,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-dark navbar-color">
       <div className="container">
         <Link to={"/"} className="navbar-brand">
-        <a href="/"><img src={logo}alt="conekta logo"/></a>
+          <img src={logo}alt="conekta logo"/>
         </Link>
         <ul className="navbar-nav mr-auto">
           <li className="nav-item">

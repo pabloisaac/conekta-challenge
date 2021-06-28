@@ -8,7 +8,8 @@ export const initialState = {
   loading: false,
   modalVisible: false,
   item: {},
-  listItems: []
+  listItems: [],
+  mode: 'SAVE'
 };
 
 export const reducer = (state = {}, action) => {
@@ -41,6 +42,12 @@ export const reducer = (state = {}, action) => {
     case actionTypes.UPDATE_LIST_ITEMS:
       response = Object.assign({}, state, {
         listItems: action.data
+      });
+      return response;
+
+    case actionTypes.SET_MODE:
+      response = Object.assign({}, state, {
+        mode: action.data
       });
       return response;
 

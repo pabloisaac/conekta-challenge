@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../store/reducer";
-import { setItem, updateListItems, setModalVisible, setLoading } from "../store/actions";
+import { setItem, updateListItems, setModalVisible, setLoading, setMode } from "../store/actions";
 import { getListRecords, deleteRecord, getById } from "../services/ApiConekta";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -109,6 +109,7 @@ const ReactTable = () => {
       }
       dispatch(setItem(item))
       dispatch(setModalVisible(true))
+      dispatch(setMode('EDIT'))
     }
   }
 
