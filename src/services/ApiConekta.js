@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlBase = "https://jupadev.click:3443";
+const urlBase = "https://conekta-appi.herokuapp.com";
 
 export const login = async (username, password) => {
     let url = `${urlBase}/login`
