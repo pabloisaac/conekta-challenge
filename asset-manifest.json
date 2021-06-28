@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/conekta-challenge/static/css/main.e8b8ef00.chunk.css",
+    "main.js": "/conekta-challenge/static/js/main.eb144a63.chunk.js",
+    "main.js.map": "/conekta-challenge/static/js/main.eb144a63.chunk.js.map",
+    "runtime-main.js": "/conekta-challenge/static/js/runtime-main.f9419c86.js",
+    "runtime-main.js.map": "/conekta-challenge/static/js/runtime-main.f9419c86.js.map",
+    "static/js/2.d3bba625.chunk.js": "/conekta-challenge/static/js/2.d3bba625.chunk.js",
+    "static/js/2.d3bba625.chunk.js.map": "/conekta-challenge/static/js/2.d3bba625.chunk.js.map",
+    "index.html": "/conekta-challenge/index.html",
+    "static/css/main.e8b8ef00.chunk.css.map": "/conekta-challenge/static/css/main.e8b8ef00.chunk.css.map",
+    "static/js/2.d3bba625.chunk.js.LICENSE.txt": "/conekta-challenge/static/js/2.d3bba625.chunk.js.LICENSE.txt",
+    "static/media/Login-02.2ef26962.svg": "/conekta-challenge/static/media/Login-02.2ef26962.svg",
+    "static/media/conekta-logo.6bb2d24e.svg": "/conekta-challenge/static/media/conekta-logo.6bb2d24e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f9419c86.js",
+    "static/js/2.d3bba625.chunk.js",
+    "static/css/main.e8b8ef00.chunk.css",
+    "static/js/main.eb144a63.chunk.js"
+  ]
+}
